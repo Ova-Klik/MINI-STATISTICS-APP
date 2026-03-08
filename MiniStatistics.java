@@ -3,7 +3,7 @@ public class MiniStatistics{
 
 
 	
-	public int getLength(int [] numbers){
+	public double getLength(int [] numbers){
 	
 		return numbers.length;
 	}
@@ -22,7 +22,7 @@ public class MiniStatistics{
 	    
 	    double sum= getSum(numbers);
 	    double length=getLength(numbers);
-	    double average=(double)sum/length;
+	    double average=sum/length;
 	    
 	    
 	    return average;
@@ -38,6 +38,25 @@ public class MiniStatistics{
             }
 
         return sum;
+}
+
+   public double getVariance(int [] numbers){
+	    double variance = 0;
+        double sumOfMeanSquared = getSumOfXMinusMeanSquared(numbers);
+        double length=getLength(numbers);
+        
+        variance = (int)((sumOfMeanSquared/length)*100)/100.0;
+            
+        return variance;
+}
+
+    public double getStandardDeviation(int [] numbers){
+	    double standardDeviation = 0;
+        double variance = getVariance(numbers);
+        
+        standardDeviation = (int)((Math.sqrt(variance)*100))/100.0;
+            
+        return standardDeviation;
 }
 	  
 	
